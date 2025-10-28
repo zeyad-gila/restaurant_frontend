@@ -1,0 +1,104 @@
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: #f7f7f7;
+  margin: 0;
+  padding: 0;
+}
+
+/* Main content container */
+.category-container {
+  margin-left: 240px; /* account for sidebar width */
+  max-width: 700px;
+  background: #fff;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.category-container h2 {
+  text-align: center;
+  color: #333;
+  margin-bottom: 25px;
+}
+
+/* Form styling */
+#category-form {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 25px;
+}
+
+#category-form input {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 15px;
+  box-sizing: border-box;
+  transition: border-color 0.2s ease;
+}
+
+#category-form input:focus {
+  border-color: #4CAF50;
+  outline: none;
+}
+
+#category-form button {
+  background: #4CAF50;
+  color: white;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#category-form button:hover {
+  background-color: #45a049;
+}
+
+/* Category list */
+#category-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+#category-list li {
+  background: #f2f2f2;
+  padding: 12px 16px;
+  margin-bottom: 10px;
+  border-radius: 6px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: background 0.3s ease;
+}
+
+#category-list li:hover {
+  background: #e6e6e6;
+}
+
+/* Delete button for future use */
+.delete-btn {
+  background: #e74c3c;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 6px 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.delete-btn:hover {
+  background: #c0392b;
+}
+
+/* Response message */
+#response {
+  text-align: center;
+  color: #333;
+  margin-top: 15px;
+  font-size: 14px;
+}

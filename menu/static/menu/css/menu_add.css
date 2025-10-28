@@ -1,0 +1,123 @@
+/* ===== Add Menu Item Page ===== */
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: #f7f7f7;
+  margin: 0;
+  padding: 0;
+}
+
+/* Container styling */
+.menu-form-container {
+  margin-left: 240px;
+  margin-top: 40px;
+  width: calc(100% - 260px);
+  max-width: 1100px;
+  background: #fff;
+  padding: 40px 60px;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.menu-form-container h2 {
+  text-align: center;
+  color: #333;
+  margin-bottom: 30px;
+  font-size: 24px;
+}
+
+/* Make the form full width inside the card */
+#menu-item-form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  box-sizing: border-box;
+}
+
+/* Fields */
+#menu-item-form label {
+  font-weight: 500;
+  color: #333;
+}
+
+#menu-item-form input,
+#menu-item-form textarea,
+#menu-item-form select {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 15px;
+  box-sizing: border-box;
+  transition: border-color 0.2s ease;
+}
+
+#menu-item-form input:focus,
+#menu-item-form textarea:focus,
+#menu-item-form select:focus {
+  border-color: #4CAF50;
+  outline: none;
+}
+
+/* Textarea */
+#menu-item-form textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+/* Button */
+#menu-item-form button {
+  background: #4CAF50;
+  color: white;
+  border: none;
+  padding: 12px;
+  border-radius: 6px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#menu-item-form button:hover {
+  background: #45a049;
+}
+
+/* Response */
+#response {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 14px;
+  color: #333;
+}
+
+h3 {
+  margin-top: 20px;
+  color: #333;
+}
+
+label {
+  display: block;
+  margin-top: 10px;
+  font-weight: 600;
+}
+
+input, select, textarea {
+  width: 100%;
+  padding: 8px;
+  margin-top: 4px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+button {
+  margin-top: 20px;
+  background: #007bff;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #0056b3;
+}

@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Register{% endblock %}
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'users/css/register_style.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="container">
+  <form id="register-form">
+    <h2>Register</h2>
+
+    <input type="text" id="username" placeholder="Username" required>
+    <input type="email" id="email" placeholder="Email" required>
+    <input type="password" id="password" placeholder="Password" required>
+    <input type="password" id="password2" placeholder="Confirm Password" required>
+
+    <select id="role" required>
+      <option value="" disabled selected>Select Role</option>
+      <option value="default">Default User</option>
+      <option value="staff">Staff</option>
+    </select>
+
+    <button type="submit">Register</button>
+    <p id="response"></p>
+  </form>
+</div>
+<script src="{% static 'users/js/register.js' %}"></script>
+{% endblock %}

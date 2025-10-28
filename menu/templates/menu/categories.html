@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Categories{% endblock %}
+{% block content %}
+
+<link rel="stylesheet" href="{% static 'menu/css/categories.css' %}">
+<h2>Categories</h2>
+
+<!-- Add category form -->
+<form id="category-form">
+  <input type="text" id="category-name" placeholder="Category name" required>
+  <button type="submit">Add Category</button>
+</form>
+
+<!-- List categories -->
+<ul id="category-list"></ul>
+
+<p id="response"></p>
+
+<script src="{% static 'menu/js/categories.js' %}"></script>
+{% endblock %}
