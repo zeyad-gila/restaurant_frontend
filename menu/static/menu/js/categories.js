@@ -1,33 +1,90 @@
+console.log("✅ categories.js loaded");
 const categoryList = document.getElementById("category-list");
 const form = document.getElementById("category-form");
 const responseMsg = document.getElementById("response");
 
-const API_URL = "http://127.0.0.1:8000"; // backend API base
+const API_URL = "http://127.0.0.1:8000";
 const token = localStorage.getItem("access");
 
-// Load all categories
+async function getCurrentUser() {
+  try {
+    const res = await fetch(`${API_URL}/me/`, {
+      headers: { Authorization: `Bearer ${token}` },
+    });
+    
+    if (!res.ok) throw new Error("Unauthorized");
+    
+    return await res.json();
+  } catch {
+    return null;
+  }
+}
+
 async function loadCategories() {
+  const user = await getCurrentUser();
+  const isVendor = user?.is_staff || false;
+  console.log("Current User:", user);
+
   const res = await fetch(`${API_URL}/menu/categories/`, {
     headers: { Authorization: `Bearer ${token}` },
   });
+
   const data = await res.json();
+
   categoryList.innerHTML = "";
+
   data.forEach((cat) => {
     const li = document.createElement("li");
-    li.textContent = `${cat.id}. ${cat.name}`;
-    li.style.cursor = "pointer";
-    li.addEventListener("click", () => deleteCategory(cat.id));
+    li.classList.add("list-group-item", "d-flex", "justify-content-between", "align-items-center");
+
+    if (isVendor) {
+      //  Vendor view (edit/delete buttons)
+      li.innerHTML = `
+        <span>${cat.name}</span>
+        <div>
+          <button class="btn btn-warning btn-sm me-2 edit-btn" data-id="${cat.id}" data-name="${cat.name}">✏️ Edit</button>
+          <button class="btn btn-danger btn-sm delete-btn" data-id="${cat.id}">🗑️ Delete</button>
+        </div>
+      `;
+    } else {
+      // 👤 Regular user view (click to browse)
+      li.innerHTML = `<span class="category-link" data-id="${cat.id}" style="cursor:pointer;">${cat.name}</span>`;
+    }
+
     categoryList.appendChild(li);
   });
+
+  // Add event listeners
+  if (isVendor) {
+    document.querySelectorAll(".edit-btn").forEach(btn => {
+      btn.addEventListener("click", () => editCategory(btn.dataset.id, btn.dataset.name));
+    });
+    document.querySelectorAll(".delete-btn").forEach(btn => {
+      btn.addEventListener("click", () => deleteCategory(btn.dataset.id));
+    });
+  } else {
+    document.querySelectorAll(".category-link").forEach(link => {
+      link.addEventListener("click", () => {
+        const categoryId = link.dataset.id;
+        window.location.href = `/menu/list/?category=${categoryId}`;
+      });
+    });
+  }
 }
 
-// ✅ Add a category (with detailed logging)
+// 🟡 Add or update category
 form.addEventListener("submit", async (e) => {
   e.preventDefault();
   const name = document.getElementById("category-name").value;
+  const categoryId = form.dataset.editingId;
 
-  const res = await fetch(`${API_URL}/menu/categories/`, {
-    method: "POST",
+  const method = categoryId ? "PUT" : "POST";
+  const url = categoryId
+    ? `${API_URL}/menu/categories/${categoryId}/`
+    : `${API_URL}/menu/categories/`;
+
+  const res = await fetch(url, {
+    method,
     headers: {
       "Content-Type": "application/json",
       Authorization: `Bearer ${token}`,
@@ -35,28 +92,25 @@ form.addEventListener("submit", async (e) => {
     body: JSON.stringify({ name }),
   });
 
-  let data;
-  try {
-    data = await res.json();
-  } catch {
-    data = {};
-  }
-
-  console.log("🔹 Response status:", res.status);
-  console.log("🔹 Response body:", data);
-
   if (res.ok) {
-    responseMsg.textContent = "✅ Category added!";
+    responseMsg.textContent = categoryId
+      ? "✅ Category updated!"
+      : "✅ Category added!";
     form.reset();
+    delete form.dataset.editingId;
     loadCategories();
   } else {
-    responseMsg.textContent = `❌ Failed: ${res.status} — ${
-      data.detail || JSON.stringify(data)
-    }`;
+    const data = await res.json();
+    responseMsg.textContent = `❌ Failed: ${JSON.stringify(data)}`;
   }
 });
 
-// Delete a category (on click)
+function editCategory(id, name) {
+  document.getElementById("category-name").value = name;
+  form.dataset.editingId = id;
+  responseMsg.textContent = "✏️ Editing category...";
+}
+
 async function deleteCategory(id) {
   if (!confirm("Delete this category?")) return;
 
@@ -68,9 +122,8 @@ async function deleteCategory(id) {
   if (res.ok) {
     loadCategories();
   } else {
-    alert("Failed to delete (only vendors can delete)");
+    alert("❌ Failed to delete category");
   }
 }
 
-// Initial load
 loadCategories();

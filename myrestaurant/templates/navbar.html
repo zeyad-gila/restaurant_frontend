@@ -1,0 +1,88 @@
+{% load static %}
+
+<nav class="sidebar">
+  <div class="logo">R.</div>
+  <ul class="nav-links">
+    <li class="nav-item active">
+      <a href="/menu/list/">
+        <i class="fas fa-home"></i>
+      </a>  
+    </li>
+    <li class="nav-item">
+      <a href="/menu/categories/">
+        <i class="fas fa-utensils"></i>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/carts/cart/">
+        <i class="fas fa-shopping-cart"></i>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/menu/add/">
+        <i class="fas fa-envelope"></i>
+      </a>
+    </li>
+  <li class="nav-item logout">
+    <a href="#" id="logout-btn">
+      <i class="fas fa-sign-out-alt"></i>
+    </a>
+  </li>
+    <li class="nav-item">
+      <a href="/order/">
+        <i class="fa-solid fa-check"></i>
+      </a>
+  </ul>
+</nav>
+
+<!-- Font Awesome -->
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+/>
+
+  <!-- Inline JS -->
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+    const logoutBtn = document.getElementById("logout-btn");
+
+    logoutBtn.addEventListener("click", async function (e) {
+      e.preventDefault();
+
+      const refresh = localStorage.getItem("refresh");
+
+      try {
+        await fetch("http://127.0.0.1:8000/logout/", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "Authorization": "Bearer " + localStorage.getItem("access")
+          },
+          body: JSON.stringify({ refresh })
+        });
+      } catch (err) {
+        console.error("Logout error:", err);
+      }
+
+      // Always remove tokens locally
+      localStorage.removeItem("access");
+      localStorage.removeItem("refresh");
+      localStorage.removeItem("userEmail");
+
+      // Redirect to login
+      window.location.href = "/login/";
+    });
+  });
+  document.addEventListener("DOMContentLoaded", function () {
+    const navItems = document.querySelectorAll(".nav-item a");
+    const currentPath = window.location.pathname;
+
+    navItems.forEach((link) => {
+      link.parentElement.classList.remove("active");
+
+      if (link.getAttribute("href") === currentPath) {
+        link.parentElement.classList.add("active");
+      }
+    });
+  });
+</script>

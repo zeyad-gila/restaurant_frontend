@@ -1,65 +1,74 @@
+/* ===== Register Page Styling ===== */
+
 body {
-  font-family: sans-serif;
-  background: #fafafa;
+  font-family: 'Poppins', sans-serif;
+  background: #f2f2f2;
   margin: 0;
   padding: 0;
-  min-height: 100vh;
+
+  /* Center everything nicely */
   display: flex;
   justify-content: center;
   align-items: center;
+  min-height: 100vh;
 }
 
-/* Container */
+/* Container (the white card) */
 .container {
-  width: 700px;
-  margin: 100px auto;
-  padding: 30px;
+  width: 100%;
+  max-width: 420px; /* smaller, cleaner width */
   background: #fff;
-  border-radius: 10px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  padding: 40px 35px;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+  box-sizing: border-box;
 }
 
-/* Form title */
+/* Title */
 #register-form h2 {
   text-align: center;
   margin-bottom: 25px;
-  color: #333;
+  color: #222;
+  font-size: 26px;
+  font-weight: 600;
 }
 
-/* Inputs and select */
+/* Inputs and Select */
 #register-form input,
 #register-form select {
   width: 100%;
-  padding: 10px;
-  margin-bottom: 15px;
+  padding: 12px;
+  margin-bottom: 18px;
   border: 1px solid #ccc;
-  border-radius: 5px;
-  box-sizing: border-box;
+  border-radius: 6px;
   font-size: 15px;
-  transition: border-color 0.2s ease;
+  transition: all 0.2s ease;
+  box-sizing: border-box;
 }
 
 #register-form input:focus,
 #register-form select:focus {
   border-color: #4CAF50;
   outline: none;
+  box-shadow: 0 0 4px rgba(76, 175, 80, 0.3);
 }
 
 /* Button */
 #register-form button {
   width: 100%;
   background: #4CAF50;
-  color: white;
+  color: #fff;
   border: none;
-  padding: 10px;
+  padding: 12px;
   border-radius: 6px;
-  cursor: pointer;
   font-size: 16px;
-  transition: background-color 0.3s ease;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.3s ease;
 }
 
 #register-form button:hover {
-  background: #45a049;
+  background: #43a047;
 }
 
 /* Response message */
@@ -68,4 +77,10 @@ body {
   color: #333;
   margin-top: 10px;
   font-size: 14px;
+}
+
+/* Optional: Add subtle hover effect to inputs */
+#register-form input:hover,
+#register-form select:hover {
+  border-color: #999;
 }
