@@ -8,16 +8,25 @@ body {
   justify-content: center;
   align-items: center;
 }
-
-.login-box {
+.login-box { 
+  position: relative;
   width: 400px;
   margin: 100px auto;
   padding: 30px;
   background: #fff;
   border-radius: 10px;
   box-shadow: 0 2px 8px rgba(0,0,0,0.15);
-  
-  
+}
+
+.language-form {
+  position: absolute;
+  bottom: 12px;
+  right: 12px;
+}
+
+.language-form select {
+  padding: 5px 8px;
+  border-radius: 6px;
 }
 
 input {

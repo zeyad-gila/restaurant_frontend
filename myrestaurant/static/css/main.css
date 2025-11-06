@@ -4,6 +4,7 @@ body {
   font-family: 'Poppins', sans-serif;
 }
 
+/* Default LTR sidebar */
 .sidebar {
   position: fixed;
   top: 0;
@@ -65,4 +66,21 @@ body {
 
 .logout {
   margin-bottom: 10px;
+}
+
+/* ✅ RTL Support */
+[dir="rtl"] .sidebar {
+  left: auto;      /* remove left alignment */
+  right: 0;        /* move sidebar to right */
+  box-shadow: -2px 0 10px rgba(0, 0, 0, 0.3); /* flip shadow direction */
+}
+
+/* Flip inside direction for Arabic */
+[dir="rtl"] .nav-links {
+  direction: rtl;
+}
+
+/* Optional: smooth transition when switching */
+.sidebar {
+  transition: all 0.3s ease-in-out;
 }

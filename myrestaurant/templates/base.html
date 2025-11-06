@@ -1,6 +1,6 @@
-{% load static %}
+{% load static i18n %}
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ LANGUAGE_CODE }}" dir="{% if LANGUAGE_CODE == 'ar' %}rtl{% else %}ltr{% endif %}">
 <head>
   <meta charset="UTF-8">
   <title>{% block title %}Restaurant{% endblock %}</title>
@@ -22,6 +22,9 @@
   <div class="container">
     {% block content %}{% endblock %}
   </div>
+  <p style="position: fixed; top: 0; left: 50%; transform: translateX(-50%);">
+    Current lang: {{ LANGUAGE_CODE }}
+  </p>
 
   <!-- ✅ Bootstrap JS bundle -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>

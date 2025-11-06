@@ -12,9 +12,15 @@ body {
   align-items: center;
   min-height: 100vh;
 }
+.language-form {
+  position: absolute;
+  bottom: 10px;
+  right: 20px;
+}
 
 /* Container (the white card) */
 .container {
+  position: relative;
   width: 100%;
   max-width: 420px; /* smaller, cleaner width */
   background: #fff;

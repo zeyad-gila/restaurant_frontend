@@ -1,38 +1,51 @@
-{% load static %}
+{% load static i18n %}
 
-<nav class="sidebar">
+<nav class="sidebar" dir="{% if LANGUAGE_CODE == 'ar' %}rtl{% else %}ltr{% endif %}">
   <div class="logo">R.</div>
+
   <ul class="nav-links">
     <li class="nav-item active">
-      <a href="/menu/list/">
-        <i class="fas fa-home"></i>
+      <a href="/menu/list/" title="{% trans 'Home' %}">
+       <i class="fas fa-utensils"></i>
       </a>  
     </li>
     <li class="nav-item">
-      <a href="/menu/categories/">
-        <i class="fas fa-utensils"></i>
+      <a href="/menu/categories/" title="{% trans 'Categories' %}">
+        <i class="fa-solid fa-bars"></i>
       </a>
     </li>
     <li class="nav-item">
-      <a href="/carts/cart/">
+      <a href="/carts/cart/" title="{% trans 'Cart' %}">
         <i class="fas fa-shopping-cart"></i>
+
       </a>
     </li>
     <li class="nav-item">
-      <a href="/menu/add/">
-        <i class="fas fa-envelope"></i>
+      <a href="/menu/add/" title="{% trans 'Contact' %}">
+       <i class="fa fa-plus" aria-hidden="true"></i>
       </a>
     </li>
-  <li class="nav-item logout">
-    <a href="#" id="logout-btn">
-      <i class="fas fa-sign-out-alt"></i>
-    </a>
-  </li>
-    <li class="nav-item">
-      <a href="/order/">
-        <i class="fa-solid fa-check"></i>
+
+    <li class="nav-item logout">
+      <a href="#" id="logout-btn" title="{% trans 'Logout' %}">
+        <i class="fas fa-sign-out-alt"></i>
       </a>
+    </li>
   </ul>
+
+  <!-- ✅ Language Switcher -->
+  <form action="{% url 'set_language' %}" method="post" class="mt-3 text-center">
+    {% csrf_token %}
+    <select name="language" onchange="this.form.submit()" class="form-select form-select-sm w-75 mx-auto">
+      {% get_current_language as LANGUAGE_CODE %}
+      {% get_available_languages as LANGUAGES %}
+      {% for lang in LANGUAGES %}
+        <option value="{{ lang.0 }}" {% if lang.0 == LANGUAGE_CODE %}selected{% endif %}>
+          {{ lang.1 }}
+        </option>
+      {% endfor %}
+    </select>
+  </form>
 </nav>
 
 <!-- Font Awesome -->
