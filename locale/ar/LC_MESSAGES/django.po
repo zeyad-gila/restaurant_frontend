@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-11-05 11:51+0200\n"
+"POT-Creation-Date: 2025-11-06 16:53+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,93 +19,128 @@ msgstr ""
 "Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
 "&& n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
 
-#: .\menu\templates\menu\add_menu_item.html:7
+#: .\cart\templates\cart\cart.html:7
+msgid "Your Cart"
+msgstr "سلة التسوق الخاصة بك"
+
+#: .\cart\templates\cart\cart.html:13
+msgid "Your Selected Items"
+msgstr "العناصر التي اخترتها"
+
+#: .\cart\templates\cart\cart.html:17
+msgid "Total"
+msgstr "الإجمالي"
+
+#: .\cart\templates\cart\cart.html:19
+msgid "EGP"
+msgstr "جنيه"
+
+#: .\cart\templates\cart\cart.html:21
+msgid "Checkout"
+msgstr "إتمام الشراء"
+
+#: .\cart\templates\cart\cart.html:26
+msgid "Your cart is empty 🛒"
+msgstr "عربة التسوق فارغة"
+
+#: .\menu\templates\menu\menu_add.html:5 .\menu\templates\menu\menu_add.html:13
 msgid "Add Menu Item"
 msgstr "إضافة عنصر إلى القائمة"
 
-#: .\menu\templates\menu\add_menu_item.html:13
+#: .\menu\templates\menu\menu_add.html:16
 msgid "Name"
 msgstr "الاسم"
 
-#: .\menu\templates\menu\add_menu_item.html:16
+#: .\menu\templates\menu\menu_add.html:19
 msgid "Description"
 msgstr "الوصف"
 
-#: .\menu\templates\menu\add_menu_item.html:19
+#: .\menu\templates\menu\menu_add.html:22
 msgid "Price"
 msgstr "السعر"
 
-#: .\menu\templates\menu\add_menu_item.html:22
+#: .\menu\templates\menu\menu_add.html:25
 msgid "Category"
 msgstr "الفئة"
 
-#: .\menu\templates\menu\add_menu_item.html:25
+#: .\menu\templates\menu\menu_add.html:28
 msgid "Item Image"
 msgstr "صورة العنصر"
 
-#: .\menu\templates\menu\add_menu_item.html:32
+#: .\menu\templates\menu\menu_add.html:34
 msgid "Optional Discount"
 msgstr "خصم اختياري"
 
-#: .\menu\templates\menu\add_menu_item.html:35
+#: .\menu\templates\menu\menu_add.html:36
 msgid "Discount Percent"
 msgstr "نسبة الخصم"
 
-#: .\menu\templates\menu\add_menu_item.html:36
+#: .\menu\templates\menu\menu_add.html:37
 msgid "e.g. 10"
 msgstr "مثال: 10"
 
-#: .\menu\templates\menu\add_menu_item.html:38
+#: .\menu\templates\menu\menu_add.html:39
 msgid "Duration (days)"
 msgstr "المدة (بالأيام)"
 
-#: .\menu\templates\menu\add_menu_item.html:39
+#: .\menu\templates\menu\menu_add.html:40
 msgid "e.g. 7"
 msgstr "مثال: 7"
 
-#: .\menu\templates\menu\add_menu_item.html:41
+#: .\menu\templates\menu\menu_add.html:42
 msgid "Start Date (optional)"
 msgstr "تاريخ البدء (اختياري)"
 
-#: .\menu\templates\menu\add_menu_item.html:44
+#: .\menu\templates\menu\menu_add.html:45
 msgid "Repeat Weekly on (optional)"
 msgstr "التكرار أسبوعياً في (اختياري)"
 
-#: .\menu\templates\menu\add_menu_item.html:46
+#: .\menu\templates\menu\menu_add.html:47
 msgid "-- None --"
 msgstr "-- لا يوجد --"
 
-#: .\menu\templates\menu\add_menu_item.html:47
+#: .\menu\templates\menu\menu_add.html:48
+#: .\venv\Lib\site-packages\django\utils\dates.py:12
 msgid "Saturday"
 msgstr "السبت"
 
-#: .\menu\templates\menu\add_menu_item.html:48
+#: .\menu\templates\menu\menu_add.html:49
+#: .\venv\Lib\site-packages\django\utils\dates.py:13
 msgid "Sunday"
 msgstr "الأحد"
 
-#: .\menu\templates\menu\add_menu_item.html:49
+#: .\menu\templates\menu\menu_add.html:50
+#: .\venv\Lib\site-packages\django\utils\dates.py:7
 msgid "Monday"
 msgstr "الاثنين"
 
-#: .\menu\templates\menu\add_menu_item.html:50
+#: .\menu\templates\menu\menu_add.html:51
+#: .\venv\Lib\site-packages\django\utils\dates.py:8
 msgid "Tuesday"
 msgstr "الثلاثاء"
 
-#: .\menu\templates\menu\add_menu_item.html:51
+#: .\menu\templates\menu\menu_add.html:52
+#: .\venv\Lib\site-packages\django\utils\dates.py:9
 msgid "Wednesday"
 msgstr "الأربعاء"
 
-#: .\menu\templates\menu\add_menu_item.html:52
+#: .\menu\templates\menu\menu_add.html:53
+#: .\venv\Lib\site-packages\django\utils\dates.py:10
 msgid "Thursday"
 msgstr "الخميس"
 
-#: .\menu\templates\menu\add_menu_item.html:53
+#: .\menu\templates\menu\menu_add.html:54
+#: .\venv\Lib\site-packages\django\utils\dates.py:11
 msgid "Friday"
 msgstr "الجمعة"
 
-#: .\menu\templates\menu\add_menu_item.html:55
+#: .\menu\templates\menu\menu_add.html:57
 msgid "Add Item"
 msgstr "إضافة العنصر"
+
+#: .\menu\templates\menu\menu_list.html:14
+msgid "Our menu"
+msgstr "القائمة الطعام"
 
 #: .\myrestaurant\settings.py:54
 msgid "English"

@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load static %}
+{% load i18n %}
 
 {% block title %}Menu Items{% endblock %}
 
@@ -10,7 +11,7 @@
 
 {% block content %}
 <div class="container py-5">
-  <h2 class="text-center mb-4">🍽️ Our Menu</h2>
+  <h2 class="text-center mb-4">🍽️{% trans "Our menu" %}</h2>
   <div id="menu-container" class="row g-4 justify-content-center"></div>
 </div>
 

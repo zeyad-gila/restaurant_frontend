@@ -37,9 +37,9 @@ document.addEventListener("DOMContentLoaded", async () => {
     });
 
     totalTag.textContent = `${total.toFixed(2)} EGP`;
-
+    const t = document.getElementById("cart-translations").dataset;
     if (total === 0) {
-      cartContainer.innerHTML = "<p class='text-muted'>Your cart is empty 🛒</p>";
+      cartContainer.innerHTML = `<p class="text-muted">${t.empty}</p>`;
       checkoutBtn.disabled = true;
     } else {
       checkoutBtn.disabled = false;
